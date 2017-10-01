@@ -1,13 +1,26 @@
 
 
 const $divsShown = $('main > div.shown');
-// const $divsHidden = $('main > div.hidden');
+const $divsHidden = $('main > div.hidden');
 const $overlay = $('.overlay');
 const $modalCloseButtons = $('button.close');
 const $modalNavButtons = $('.hidden button:not(.close)');
 const $searchbox = $('input.search');
 let $modalDivs = $('div.shown.visible').next('.hidden');
 
+let $shownPics = $divsShown.children('img');
+let $shownNames = $divsShown.find('h3');
+let $shownEmails = $divsShown.find('p.email');
+let $shownCities = $divsShown.find('p.city');
+
+let $hidPics = $divsHidden.children('img');
+let $hidNames = $divsHidden.find('h3');
+let $hidUsers = $divsHidden.find('p:first-of-type');
+let $hidEmails = $divsHidden.find('p.email');
+let $hidCities = $divsHidden.find('p.city');
+let $hidPhones = $divsHidden.find('p.phone');
+let $hidAddys = $divsHidden.find('p.addy');
+let $hidBdays = $divsHidden.find('p.bday');
 
 
 
@@ -19,6 +32,19 @@ $.getJSON('https://randomuser.me/api/?results=12&nat=us,gb&inc=name,location,ema
 		
 		console.log(v);
 		
+		$shownPics[i].src = v.picture.large;
+		$shownNames[i].textContent = `${v.name.first} ${v.name.last}`;
+		$shownEmails[i].textContent = v.email;
+		$shownCities[i].textContent = v.location.city;
+		
+		$hidPics[i].src = v.picture.large;
+		$hidNames[i].textContent = `${v.name.first} ${v.name.last}`;
+		$hidUsers[i].textContent = v.login.username;
+		$hidEmails[i].textContent = v.email;
+		$hidCities[i].textContent = v.location.city;
+		$hidPhones[i].textContent = v.cell;
+		$hidAddys[i].textContent = `${v.location.street} ${v.location.city}, ${v.location.state} ${v.location.postcode}`;
+		$hidBdays[i].textContent = v.dob;
 		
 		
 		

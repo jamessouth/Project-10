@@ -21,6 +21,11 @@ div.overlay{
 
 main{
 	padding-bottom: 3em;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+	/* grid-template-rows: repeat(auto-fit, minmax(300px, 1fr)); */
+	grid-gap: 40px 33px;
+	justify-items: center;
 }
 
 
@@ -147,7 +152,7 @@ main > div.shown{
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-	margin: 1em auto 2em;
+	/* margin: 1em auto 2em; */
 	padding: 1.5em;
 	max-width: 414px;
 	transition: border-color .8s;
@@ -187,6 +192,7 @@ div.shown img{
 
 
 .shown div p,
+.shown > p,
 .hidden p{
 	font-weight: 400;
 	font-size: 17px;
