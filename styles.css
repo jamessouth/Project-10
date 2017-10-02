@@ -17,6 +17,7 @@ div.overlay{
 	height: 100%;
 	opacity: .5;
 	background-color: #000;
+	z-index: 35;
 }
 
 main{
@@ -47,14 +48,14 @@ input{
 	height: 44px;
 	display: block;
 	background-color: #fff;
-	width: 85%;
+	width: 88%;
 	margin: 2em auto;
 	border: 2px solid #dfdfdf;
 	border-radius: 8px;
 	padding-left: 14px;
 	font-size: 16px;
 	color: #888e92;
-	max-width: 414px;
+	max-width: 416px;
 	transition: border-color .8s;
 }
 input:focus{
@@ -85,7 +86,7 @@ input::-moz-placeholder {
 	padding: 3em 1.5em;
 	transform: translateX(-50%);
 	left: 50%;
-	top: 10%;
+	top: 10px;
 	max-width: 456px;
 }
 
@@ -144,17 +145,18 @@ input::-moz-placeholder {
 
 
 main > div.shown{
+	position: relative;
 	background-color: #fff;
 	border: 2px solid #dfdfdf;
 	border-radius: 8px;
-	width: 85%;
+	width: 88%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	align-items: center;
-	/* margin: 1em auto 2em; */
+	align-items: flex-start;
+	min-height: 186px;
 	padding: 1.5em;
-	max-width: 414px;
+	max-width: 416px;
 	transition: border-color .8s;
 }
 
@@ -170,8 +172,8 @@ main > div.shown:last-of-type{
 }
 
 div.shown img{
-	width: 40%;
-	height: 40%;
+	width: 45%;
+	/* height: 40%; */
 	max-width: 128px;
 	max-height: 128px;
 	border-radius: 50%;
@@ -183,35 +185,65 @@ div.shown img{
 
 .shown div h3,
 .hidden h3{
+	line-height: 24px;
 	font-weight: 700;
 	margin-bottom: 0.25em;
 	font-size: 21px;
 	color: #404a51;
 }
 
-
+.shown div{
+	
+}
 
 .shown div p,
-.shown > p,
 .hidden p{
 	font-weight: 400;
 	font-size: 17px;
 	color: #888e92;
 }
 
+.shown div p.email{
+	position: absolute;
+	bottom: 1%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.shown div p.email:hover{
+	text-decoration: underline;
+	color: blue;
+	cursor: pointer;
+}
+
+p.city{
+	text-transform: capitalize;
+}
 
 
 
-
-
-
-
-@media screen and (min-width: 500px){
+@media screen and (min-width: 490px){
 
 	.shown div{
 		text-align: start;
 	}
+	
+	.shown div p.email{
+		position: static;
+		bottom: auto;
+		left: auto;
+		transform: none;
+	}
 
+	main > div.shown{
+		justify-content: flex-start;
+		align-items: center;
+		/* padding-right: .5em; */
+	}
+	
+	div.shown img{
+		margin-right: 1.25em;
+	}
 
 }
 
