@@ -192,9 +192,7 @@ div.shown img{
 	color: #404a51;
 }
 
-.shown div{
-	
-}
+
 
 .shown div p,
 .hidden p{
@@ -210,16 +208,21 @@ div.shown img{
 	transform: translateX(-50%);
 }
 
-.shown div p.email:hover{
+.shown div p.email:hover,
+.hidden div p.email:hover{
 	text-decoration: underline;
 	color: blue;
 	cursor: pointer;
 }
 
-p.city{
+p.city,
+p.addy{
 	text-transform: capitalize;
 }
 
+p.addy{
+	text-align: center;
+}
 
 
 @media screen and (min-width: 490px){

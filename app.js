@@ -22,6 +22,71 @@ let $hidPhones = $divsHidden.find('p.phone');
 let $hidAddys = $divsHidden.find('p.addy');
 let $hidBdays = $divsHidden.find('p.bday');
 
+// https://gist.github.com/mshafrir/2646763
+states_hash = {
+    'Alabama': 'AL',
+    'Alaska': 'AK',
+    'American Samoa': 'AS',
+    'Arizona': 'AZ',
+    'Arkansas': 'AR',
+    'California': 'CA',
+    'Colorado': 'CO',
+    'Connecticut': 'CT',
+    'Delaware': 'DE',
+    'District Of Columbia': 'DC',
+    'Federated States Of Micronesia': 'FM',
+    'Florida': 'FL',
+    'Georgia': 'GA',
+    'Guam': 'GU',
+    'Hawaii': 'HI',
+    'Idaho': 'ID',
+    'Illinois': 'IL',
+    'Indiana': 'IN',
+    'Iowa': 'IA',
+    'Kansas': 'KS',
+    'Kentucky': 'KY',
+    'Louisiana': 'LA',
+    'Maine': 'ME',
+    'Marshall Islands': 'MH',
+    'Maryland': 'MD',
+    'Massachusetts': 'MA',
+    'Michigan': 'MI',
+    'Minnesota': 'MN',
+    'Mississippi': 'MS',
+    'Missouri': 'MO',
+    'Montana': 'MT',
+    'Nebraska': 'NE',
+    'Nevada': 'NV',
+    'New Hampshire': 'NH',
+    'New Jersey': 'NJ',
+    'New Mexico': 'NM',
+    'New York': 'NY',
+    'North Carolina': 'NC',
+    'North Dakota': 'ND',
+    'Northern Mariana Islands': 'MP',
+    'Ohio': 'OH',
+    'Oklahoma': 'OK',
+    'Oregon': 'OR',
+    'Palau': 'PW',
+    'Pennsylvania': 'PA',
+    'Puerto Rico': 'PR',
+    'Rhode Island': 'RI',
+    'South Carolina': 'SC',
+    'South Dakota': 'SD',
+    'Tennessee': 'TN',
+    'Texas': 'TX',
+    'Utah': 'UT',
+    'Vermont': 'VT',
+    'Virgin Islands': 'VI',
+    'Virginia': 'VA',
+    'Washington': 'WA',
+    'West Virginia': 'WV',
+    'Wisconsin': 'WI',
+    'Wyoming': 'WY'
+}
+
+
+
 
 function abbrev(match){
 	return match[0];
@@ -55,6 +120,15 @@ $.getJSON('https://randomuser.me/api/?results=12&nat=us&inc=name,location,email,
 		// }
 		
 		
+		let state;
+		// console.log(v.location.state);
+		for(let st in states_hash){
+			if(v.location.state.toLowerCase() === st.toLowerCase()){
+				state = states_hash[st];
+				break;
+			}
+		}
+		
 		
 		
 		$shownPics[i].src = v.picture.large;
@@ -68,14 +142,14 @@ $.getJSON('https://randomuser.me/api/?results=12&nat=us&inc=name,location,email,
 		$hidEmails[i].textContent = v.email;
 		$hidCities[i].textContent = city;
 		$hidPhones[i].textContent = v.cell;
-		$hidAddys[i].textContent = `${v.location.street} ${v.location.city}, ${v.location.state} ${v.location.postcode}`;
+		$hidAddys[i].textContent = `${v.location.street}, ${v.location.city}, ${state} ${v.location.postcode}`;
 		$hidBdays[i].textContent = v.dob;
 		
 		if($shownEmails[i].offsetWidth > 221){
 			$shownEmails[i].textContent = $shownEmails[i].textContent.replace(/^\w+/i, abbrev);
 		}
 		
-		
+		$hidPhones[i].textContent = $hidPhones[i].textContent.replace('-', ' ');
 		
 		
 		
