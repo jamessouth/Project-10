@@ -18,6 +18,7 @@ let $hidCities = $divsHidden.find('p.city');
 let $hidPhones = $divsHidden.find('p.phone');
 let $hidAddys = $divsHidden.find('p.addy');
 let $hidBdays = $divsHidden.find('p.bday');
+let $body = $('body');
 // https://gist.github.com/mshafrir/2646763
 let states_hash = {
     'Alabama': 'AL',
@@ -135,10 +136,12 @@ $divsShown.on('click', function(){
 	$overlay.show();
 	$modal.css({'display': 'flex', 'top': topDist});
 	$(this).blur();
+	$body.css('overflowY', 'hidden');
 });
 $modalCloseButtons.on('click', function(){
 	$overlay.hide();
 	$(this).parent('.hidden').hide();
+	$body.css('overflowY', 'visible');
 });
 $modalNavButtons.on('click', function(){
 	let index = $modalDivs.index($(this).parent());
