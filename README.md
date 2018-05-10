@@ -1,3 +1,4 @@
 # Project-10
 employee directory
-refactored [here](https://github.com/jamessouth/React-Project-10)
+
+refactored with react [here](https://github.com/jamessouth/React-Project-10)
