@@ -98,7 +98,7 @@ $.getJSON('https://randomuser.me/api/?results=12&nat=us&inc=name,location,email,
 				break;
 			}
 		}
-		let bday = v.dob.split(' ')[0].split('-');
+		let bday = v.dob.date.split('T')[0].split('-');
 		let [yr, mo, day] = [bday[0].replace(/^\d{2}/, ''), bday[1], bday[2]];
 		$shownPics[i].src = v.picture.large;
 		$shownNames[i].textContent = name;
